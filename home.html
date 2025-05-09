@@ -1,0 +1,76 @@
+{% extends 'principles/base.html' %}
+
+{% block hero %}
+<div class="hero-section">
+    <div class="container text-center py-5">
+        <h1 class="display-4 fw-bold mb-4">Interactive Design Principles Explorer</h1>
+        <p class="lead mb-4">A comprehensive guide to human-centered design principles, cognitive aspects, and interaction patterns</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a href="{% url 'design_principles' %}" class="btn btn-primary btn-lg px-4 gap-3">
+                <i class="bi bi-journal-bookmark"></i> Explore Principles
+            </a>
+            <a href="{% url 'cognitive_aspects' %}" class="btn btn-outline-light btn-lg px-4">
+                <i class="bi bi-brain"></i> Cognitive Aspects
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-header principle-card">
+                <h5><i class="bi bi-journal-bookmark"></i> Design Principles</h5>
+            </div>
+            <div class="card-body">
+                <p>Explore fundamental design principles from Norman, Nielsen, and other HCI pioneers. Learn how to apply visibility, feedback, constraints, consistency, and affordance in your designs.</p>
+                <a href="{% url 'design_principles' %}" class="btn btn-primary mt-2">Explore Principles</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-header cognitive-card">
+                <h5><i class="bi bi-brain"></i> Cognitive Aspects</h5>
+            </div>
+            <div class="card-body">
+                <p>Understand how human cognition impacts design. Explore attention, perception, memory, learning, and problem-solving processes and their implications for interactive systems.</p>
+                <a href="{% url 'cognitive_aspects' %}" class="btn btn-primary mt-2">Explore Cognition</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-header interaction-card">
+                <h5><i class="bi bi-hand-index-thumb"></i> Interaction Types</h5>
+            </div>
+            <div class="card-body">
+                <p>Discover different interaction paradigms: instructing, conversing, manipulating, exploring, and responding. Learn when to use each type and how to design effective interactions.</p>
+                <a href="{% url 'interaction_types' %}" class="btn btn-primary mt-2">Explore Interactions</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mt-4">
+    <div class="card-header">
+        <h5><i class="bi bi-lightbulb"></i> Key Concepts</h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <h6>Experiential vs. Reflective Cognition</h6>
+                <p><strong>Experiential cognition</strong> is fast, automatic, and intuitive (e.g., driving a familiar route). <strong>Reflective cognition</strong> is slow, deliberate, and analytical (e.g., learning a new programming concept).</p>
+            </div>
+            <div class="col-md-6">
+                <h6>Distributed Cognition</h6>
+                <p>Cognition isn't just in the head—it's spread across people, tools, and environments (e.g., air traffic control teams using screens, radios, and protocols together).</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

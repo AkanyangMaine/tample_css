@@ -1,0 +1,56 @@
+{% extends 'principles/base.html' %}
+
+{% block content %}
+<h1 class="mb-4"><i class="bi bi-hand-index-thumb"></i> Interaction Types</h1>
+<p class="lead">Different paradigms for how users interact with systems.</p>
+
+<div class="row">
+    {% for interaction in interactions %}
+    <div class="col-md-6 mb-4">
+        <div class="card interaction-card h-100">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5>{{ interaction.name }}</h5>
+                <span class="badge bg-light text-dark badge-type">{{ interaction.get_interaction_type_display }}</span>
+            </div>
+            <div class="card-body">
+                <p>{{ interaction.description }}</p>
+                
+                <h6>Examples:</h6>
+                <p>{{ interaction.examples }}</p>
+                
+                <h6>Design Tips:</h6>
+                <p>{{ interaction.design_tips }}</p>
+                
+                {% if interaction.related_principles.all %}
+                <div class="mt-3">
+                    <h6>Related Design Principles:</h6>
+                    <div class="d-flex flex-wrap gap-2">
+                        {% for principle in interaction.related_principles.all %}
+                        <span class="badge bg-secondary">{{ principle.name }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="card mt-4">
+    <div class="card-header">
+        <h5><i class="bi bi-lightbulb"></i> Choosing Interaction Types</h5>
+    </div>
+    <div class="card-body">
+        <p>When designing interactions, consider:</p>
+        <ul>
+            <li><strong>User goals:</strong> What are they trying to accomplish?</li>
+            <li><strong>Context:</strong> Where and how will the interaction occur?</li>
+            <li><strong>Frequency:</strong> Is this a one-time or repeated interaction?</li>
+            <li><strong>User expertise:</strong> Are they novices or experts?</li>
+            <li><strong>Device capabilities:</strong> What input/output methods are available?</li>
+        </ul>
+        <p class="mt-2">Often, systems combine multiple interaction types for different tasks.</p>
+    </div>
+</div>
+{% endblock %}

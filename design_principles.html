@@ -1,0 +1,101 @@
+{% extends 'principles/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <h1 class="mb-4"><i class="bi bi-journal-bookmark"></i> Design Principles</h1>
+        <p class="lead">Key principles for creating effective user interfaces based on Norman, Nielsen, and other HCI research.</p>
+        
+        <div class="mb-4">
+            <h3>Norman's Design Principles</h3>
+            <div class="row">
+                {% for principle in principles %}
+                    {% if principle.principle_type == 'NORMAN' %}
+                    <div class="col-md-6 mb-3">
+                        <div class="card principle-card h-100">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">{{ principle.name }}</h5>
+                                <span class="badge bg-light text-dark badge-type">{{ principle.get_principle_type_display }}</span>
+                            </div>
+                            <div class="card-body">
+                                <p>{{ principle.description }}</p>
+                                {% if principle.example %}
+                                <div class="example-box">
+                                    <strong>Example:</strong> {{ principle.example }}
+                                </div>
+                                {% endif %}
+                                {% if principle.related_cognition %}
+                                <div class="mt-2">
+                                    <small class="text-muted"><strong>Related cognition:</strong> {{ principle.related_cognition }}</small>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        
+        <div class="mb-4">
+            <h3>Nielsen's Heuristics</h3>
+            <div class="row">
+                {% for principle in principles %}
+                    {% if principle.principle_type == 'NIELSEN' %}
+                    <div class="col-md-6 mb-3">
+                        <div class="card principle-card h-100">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">{{ principle.name }}</h5>
+                                <span class="badge bg-light text-dark badge-type">{{ principle.get_principle_type_display }}</span>
+                            </div>
+                            <div class="card-body">
+                                <p>{{ principle.description }}</p>
+                                {% if principle.example %}
+                                <div class="example-box">
+                                    <strong>Example:</strong> {{ principle.example }}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5><i class="bi bi-check-circle"></i> Usability Goals</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    {% for goal in goals %}
+                    <li class="list-group-item">
+                        <h6>{{ goal.name }}</h6>
+                        <p>{{ goal.description }}</p>
+                        <small class="text-muted"><strong>Evaluation question:</strong> {{ goal.evaluation_question }}</small>
+                        {% if goal.example %}
+                        <div class="example-box mt-2">
+                            <strong>Example:</strong> {{ goal.example }}
+                        </div>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="bi bi-lightbulb"></i> Design Tip</h5>
+            </div>
+            <div class="card-body">
+                <p>When applying design principles, consider the trade-offs between them. For example, increasing visibility might reduce simplicity, or adding constraints might limit flexibility.</p>
+                <p>Always consider the context of use and your specific users' needs.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
